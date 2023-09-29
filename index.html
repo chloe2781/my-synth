@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Webpage</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+      #note-display {
+        font-size: 10em;
+        font-weight: bold;
+      }
+      #keyboard-image {
+        width: 20%;
+        height: auto;
+      }
+    </style>
+    <script src="main.js"></script>
+  </head>
+  <!--float in the middle of the page-->
+  <body>
+    <h1>Press a few keys!</h1>
+    <span>Current waveform: </span>
+    <select name="waveform">
+      <option value="sine">Sine</option>
+      <option value="square" selected>Square</option>
+      <option value="sawtooth">Sawtooth</option>
+      <option value="triangle">Triangle</option>
+      <!-- <option value="custom">Custom</option> -->
+    </select>
+    <div id="note-display"></div>
+    <img id="keyboard-image" src="keyboard.jpeg" alt="keyboard" usemap="#keyboard">
+  </body>
+</html>
