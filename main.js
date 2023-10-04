@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     let lfo;
     var randomColor;
+    var noteName;
     function playNote(key, gainVal, synthType) {
         // const modulatorFreq = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
@@ -139,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     
 
-        const noteName = getNoteName(key);
+        noteName = getNoteName(key);
         const noteDisplay = document.getElementById('note-display');
         randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
         noteDisplay.textContent = noteName;
@@ -302,5 +303,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
         canvasCtx.lineTo(canvas.width, canvas.height / 2);
         canvasCtx.stroke();
     }
+
+    const letterContainer = document.getElementById("letter-container");
+
+    document.addEventListener("keydown", (event) => {
+        // Get a random letter
+        // const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+
+        // Create a div element for the falling letter
+        const letterElement = document.createElement("div");
+        letterElement.className = "letter";
+        letterElement.textContent = noteName;
+        letterElement.style.color = randomColor;
+
+        // Set a random left position
+        letterElement.style.left = Math.random() * 100 + "vw";
+
+        // Append the letter to the container
+        letterContainer.appendChild(letterElement);
+
+        // Remove the letter after the animation is complete
+        letterElement.addEventListener("animationiteration", () => {
+            letterElement.style.animationPlayState = "paused";
+
+        });
+    });
 
 });

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Webpage</title>
     <style>
       body {
@@ -10,10 +11,13 @@
         align-items: center;
         height: 100vh;
         flex-direction: column;
+        overflow: hidden;
+        margin: 0;
       }
       #note-display {
         font-size: 10em;
         font-weight: bold;
+        padding-right: 0.3em;
       }
       #keyboard-image {
         width: 20%;
@@ -23,18 +27,62 @@
         font-size: 0.8em;
         margin-top: -1em;
       }
+      .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .range-inputs {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        top: 0;
+      }
+      .range-inputs-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 1em;
+      }
+      .container {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+      .letter {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        animation: fall 2s ease-in-out;
+        color: black;
+        font-size: 24px;
+        font-family: Arial, sans-serif;
+      }
+      @keyframes fall {
+        0% {
+          top: -3%;
+          opacity: 1;
+        }
+        100% {
+          top: 96.5%;
+          opacity: 1;
+        }
+      }
+
     </style>
     <script src="main.js"></script>
   </head>
   <!--float in the middle of the page-->
   <body>
-    <div class="container">
-      <canvas id="globalVisualizer" width="150" height="85" style="border:1px solid #000000">
-        wave form visualizer
-      </canvas>
-    </div>
 
-    <h1>Press a few keys!</h1>
+    <div class="container">
+      <div id="letter-container"></div>
+
+    <h1>
+      Don't be shy, press a few keys!
+    </h1>
 
     <span>Current audio synthesis: </span>
     <select name="synthesis">
@@ -51,17 +99,34 @@
       <option value="triangle">Triangle</option>
     </select>
     <br>
-    <div id="note-display"></div>
-    <!-- <img id="keyboard-image" src="keyboard.jpeg" alt="keyboard" usemap="#keyboard"> -->
-    <p>Control LFO frequency</p>
-    <p class="sub-text"> (Try dragging while holding down a key)</p>
-    <input type="range" id="lfo-range-input" min="0" max="50" step="1"></input>
+
+    <div class="row">
+      <div id="note-display">A</div>
+      <div class="container">
+        <canvas id="globalVisualizer" width="150" height="85" style="border:1px solid #000000">
+          wave form visualizer
+        </canvas>
+      </div>
+    </div> 
+
+    <img id="keyboard-image" src="keyboard.jpeg" alt="keyboard" usemap="#keyboard">
+      
+    <div class="range-inputs">
+      <div class="range-inputs-col">
+      <p>Control LFO frequency</p>
+      <p class="sub-text"> (Try dragging while holding down a key)</p>
+      <input type="range" id="lfo-range-input" min="0" max="50" step="1"></input>
+      </div>
+      <div class="range-inputs-col">
+        <p>Number of partials </p>
+        <p class="sub-text">(Additive)</p>
+        <input type="range" id="partials-range-input" min="1" max="10" step="1" value="1"></input>
+        <span id="partials-display">1</span>
+      </div>
+    </div>
     <br>
-    <p>Number of partials </p>
-    <p class="sub-text">(Additive)</p>
-    <input type="range" id="partials-range-input" min="1" max="10" step="1" value="1"></input>
-    <span id="partials-display">1</span>
-    <br>
+    
+    </div>
     
   </body>
 </html>
