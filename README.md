@@ -2,7 +2,7 @@
 Building my own synth on the web using WebAudio.
 
 ## Check it out here:
-
+https://chloe2781.github.io/my-synth/
 
 ## How does it work?
 I built a simple keyboard interface that plays a sound when a key is pressed down. Try it out and tune it to your liking!
