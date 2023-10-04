@@ -19,21 +19,49 @@
         width: 20%;
         height: auto;
       }
+      .sub-text {
+        font-size: 0.8em;
+        margin-top: -1em;
+      }
     </style>
     <script src="main.js"></script>
   </head>
   <!--float in the middle of the page-->
   <body>
+    <div class="container">
+      <canvas id="globalVisualizer" width="150" height="85" style="border:1px solid #000000">
+        wave form visualizer
+      </canvas>
+    </div>
+
     <h1>Press a few keys!</h1>
+
+    <span>Current audio synthesis: </span>
+    <select name="synthesis">
+      <option value="additive"e>Additive</option>
+      <option value="am" selected>AM</option>
+      <option value="fm" >FM</option>
+    </select>
+    <br>
     <span>Current waveform: </span>
     <select name="waveform">
-      <option value="sine">Sine</option>
-      <option value="square" selected>Square</option>
+      <option value="sine" selected >Sine</option>
+      <option value="square">Square</option>
       <option value="sawtooth">Sawtooth</option>
       <option value="triangle">Triangle</option>
-      <!-- <option value="custom">Custom</option> -->
     </select>
+    <br>
     <div id="note-display"></div>
-    <img id="keyboard-image" src="keyboard.jpeg" alt="keyboard" usemap="#keyboard">
+    <!-- <img id="keyboard-image" src="keyboard.jpeg" alt="keyboard" usemap="#keyboard"> -->
+    <p>Control LFO frequency</p>
+    <p class="sub-text"> (Try dragging while holding down a key)</p>
+    <input type="range" id="lfo-range-input" min="0" max="50" step="1"></input>
+    <br>
+    <p>Number of partials </p>
+    <p class="sub-text">(Additive)</p>
+    <input type="range" id="partials-range-input" min="1" max="10" step="1" value="1"></input>
+    <span id="partials-display">1</span>
+    <br>
+    
   </body>
 </html>
