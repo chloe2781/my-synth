@@ -45,6 +45,11 @@
         align-items: center;
         margin: 0 1em;
       }
+      .balance {
+        margin-top: -1em;
+        margin-right: 8em;
+        margin-left: -2em;
+      }
       .container {
         justify-content: center;
         align-items: center;
@@ -112,10 +117,11 @@
     <img id="keyboard-image" src="keyboard.jpeg" alt="keyboard" usemap="#keyboard">
       
     <div class="range-inputs">
-      <div class="range-inputs-col">
-      <p>Control LFO frequency</p>
-      <p class="sub-text"> (Try dragging while holding down a key)</p>
-      <input type="range" id="lfo-range-input" min="0" max="50" step="1"></input>
+      <div class="range-inputs-col balance">
+        <p>Control LFO frequency</p>
+        <p class="sub-text"> (Try dragging while holding down a key)</p>
+        <input type="range" id="lfo-range-input" min="0" max="50" step="1"></input>
+        <span id="lfo-frequency-display">25</span>
       </div>
       <div class="range-inputs-col">
         <p>Number of partials </p>

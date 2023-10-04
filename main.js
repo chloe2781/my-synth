@@ -148,9 +148,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     const lfoRangeInput = document.getElementById('lfo-range-input');
+    const lfoDisplay = document.getElementById('lfo-frequency-display');
 
     lfoRangeInput.addEventListener('input', function() {
         lfo.frequency.value = this.value;
+        lfoDisplay.textContent = this.value;
     });
 
     // implement AM and FM synthesis
@@ -178,6 +180,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // const lfo = audioCtx.createOscillator();
         // Can let user choose frequency of LFO
         lfo.frequency.value = 0.5;
+        lfoDisplay.textContent = lfo.frequency.value;
         lfo.connect(modulatorGain.gain);
         lfo.type = wavePicker.value;
         lfo.start();
@@ -213,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         
         // Let user choose frequency of LFO
         lfo.frequency.value = 0.5;
+        lfoDisplay.textContent = lfo.frequency.value;
         lfo.connect(depth.gain);
         lfo.type = wavePicker.value;
         lfo.start();
@@ -231,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         numPartials = document.getElementById('partials-range-input').value;
         
         lfo.frequency.value = 0.3;
+        lfoDisplay.textContent = lfo.frequency.value;
         const partialGain1 = audioCtx.createGain();
         const partialGain2 = audioCtx.createGain();
 
